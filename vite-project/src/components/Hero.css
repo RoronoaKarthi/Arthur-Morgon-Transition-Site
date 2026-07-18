@@ -153,7 +153,7 @@
 .right {
   position: absolute;
   bottom: 100px;
-  right: -50px;
+  right: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;

@@ -2,7 +2,8 @@
 
 .navbar {
   position: fixed;
-  width: 1320px;
+  left: 0;
+  right: 0;
   top: 0;
   height: 72px;
   padding: 0 60px;
@@ -14,6 +15,7 @@
   backdrop-filter: blur(6px);
   z-index: 1000;
   border-bottom: 1px solid rgba(192, 0, 26, 0.2);
+  box-sizing: border-box;
 }
 
 /* ── Logo ─────────────────────────────────── */

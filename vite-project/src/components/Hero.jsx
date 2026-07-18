@@ -20,8 +20,6 @@ const Hero = () => {
 
     const bottom = new Image()
     const top    = new Image()
-    bottom.src = '/images/Arthur1.png'
-    top.src    = '/images/Arthur2.png'
 
     const resize = () => {
       canvas.width  = hero.offsetWidth
@@ -32,12 +30,16 @@ const Hero = () => {
 
     const onMove = (e) => {
       const rect = hero.getBoundingClientRect()
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY
       mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
       }
     }
     hero.addEventListener('mousemove', onMove)
+    hero.addEventListener('touchmove', onMove, { passive: true })
+    hero.addEventListener('touchstart', onMove, { passive: true })
 
     let rafId
 
@@ -102,8 +104,13 @@ const Hero = () => {
     bottom.onload = onLoad
     top.onload    = onLoad
 
+    bottom.src = `${import.meta.env.BASE_URL}images/Arthur1.png`
+    top.src    = `${import.meta.env.BASE_URL}images/Arthur2.png`
+
     return () => {
       hero.removeEventListener('mousemove', onMove)
+      hero.removeEventListener('touchmove', onMove)
+      hero.removeEventListener('touchstart', onMove)
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(rafId)
     }
@@ -143,7 +150,7 @@ const Hero = () => {
         <motion.div className="left" variants={item}>
           <motion.span className="st-eyebrow" variants={item}
             style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.25em' }}>
-            Arther Morgon
+            Arthur Morgan
           </motion.span>
           <h1 className="st-title"
             style={{ fontFamily: "'Bebas Neue', 'Cinzel Decorative', cursive", letterSpacing: '0.05em' }}>

@@ -10,7 +10,7 @@ const Navbar = () => {
         <li>Blackwater</li>
         <li>Strawberry</li>
         <li>Valentine</li>
-        <li>Saint Danis</li>
+        <li>Saint Denis</li>
       </ul>
     </nav>
   )
